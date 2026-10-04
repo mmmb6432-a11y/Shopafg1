@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>بازارچه افغانستان</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <script type="module" src="script.js"></script>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+
+    <div class="logo">
+      🛍️ بازارچه
+    </div>
+
+    <div class="header-actions">
+      <button id="darkBtn" class="icon-btn">🌙</button>
+      <button id="accountBtn" class="account-btn">
+        👤 حساب
+      </button>
+    </div>
+
+  </header>
+
+
+  <!-- SEARCH -->
+  <section class="search-area">
+
+    <div class="search-box">
+      🔍
+      <input
+        id="searchInput"
+        type="search"
+        placeholder="جستجوی کالا..."
+      >
+    </div>
+
+  </section>
+
+
+  <!-- CATEGORIES -->
+  <section class="categories">
+
+    <button class="category active" data-category="همه">
+      همه
+    </button>
+
+    <button class="category" data-category="موبایل">
+      📱 موبایل
+    </button>
+
+    <button class="category" data-category="لپتاپ">
+      💻 لپتاپ
+    </button>
+
+    <button class="category" data-category="موتر">
+      🚗 موتر
+    </button>
+
+    <button class="category" data-category="خانه">
+      🏠 خانه
+    </button>
+
+    <button class="category" data-category="لباس">
+      👕 لباس
+    </button>
+
+    <button class="category" data-category="دیگر">
+      📦 دیگر
+    </button>
+
+  </section>
+
+
+  <!-- MAIN -->
+  <main>
+
+    <div class="section-title">
+      <h2>آگهی‌های جدید</h2>
+
+      <button id="addProductBtn" class="add-btn">
+        ＋ ثبت آگهی
+      </button>
+    </div>
+
+    <div id="products" class="products"></div>
+
+  </main>
+
+
+  <!-- ACCOUNT MODAL -->
+  <div id="accountModal" class="modal">
+
+    <div class="modal-box">
+
+      <button class="close" data-close="accountModal">
+        ×
+      </button>
+
+      <div id="authArea">
+
+        <!-- LOGIN -->
+        <div id="loginArea">
+
+          <h2>ورود به حساب</h2>
+
+          <p class="modal-description">
+            وارد حساب بازارچه خود شوید
+          </p>
+
+          <input
+            id="loginEmail"
+            type="email"
+            placeholder="ایمیل"
+          >
+
+          <input
+            id="loginPassword"
+            type="password"
+            placeholder="رمز عبور"
+          >
+
+          <button id="loginBtn" class="primary-btn">
+            ورود
+          </button>
+
+          <button id="forgotBtn" class="text-btn">
+            رمز عبور را فراموش کرده‌ام
+          </button>
+
+          <p>
+            حساب ندارید؟
+            <button id="showRegisterBtn" class="link-btn">
+              ثبت‌نام
+            </button>
+          </p>
+
+        </div>
+
+
+        <!-- REGISTER -->
+        <div id="registerArea" class="hidden">
+
+          <h2>ساخت حساب</h2>
+
+          <p class="modal-description">
+            حساب جدید بازارچه بسازید
+          </p>
+
+          <input
+            id="registerName"
+            type="text"
+            placeholder="نام شما"
+          >
+
+          <input
+            id="registerEmail"
+            type="email"
+            placeholder="ایمیل"
+          >
+
+          <input
+            id="registerPassword"
+            type="password"
+            placeholder="رمز عبور حداقل ۶ حرف"
+          >
+
+          <input
+            id="registerPassword2"
+            type="password"
+            placeholder="تکرار رمز عبور"
+          >
+
+          <button id="registerBtn" class="primary-btn">
+            ساخت حساب
+          </button>
+
+          <p>
+            قبلاً حساب ساخته‌اید؟
+            <button id="showLoginBtn" class="link-btn">
+              ورود
+            </button>
+          </p>
+
+        </div>
+
+
+        <!-- USER -->
+        <div id="userArea" class="hidden">
+
+          <div class="user-icon">
+            👤
+          </div>
+
+          <h2 id="userName">
+            کاربر
+          </h2>
+
+          <p id="userEmail"></p>
+
+          <div id="verificationBox" class="verification">
+            ⚠️ ایمیل شما هنوز تأیید نشده است.
+
+            <button id="verifyBtn">
+              ارسال دوباره ایمیل تأیید
+            </button>
+          </div>
+
+          <div id="verifiedBox" class="verified hidden">
+            ✅ حساب شما فعال و ایمیل شما تأیید شده است.
+          </div>
+
+          <button id="logoutBtn" class="logout-btn">
+            خروج از حساب
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ADD PRODUCT MODAL -->
+  <div id="productModal" class="modal">
+
+    <div class="modal-box">
+
+      <button class="close" data-close="productModal">
+        ×
+      </button>
+
+      <h2>ثبت آگهی جدید</h2>
+
+      <input
+        id="productTitle"
+        type="text"
+        placeholder="نام کالا"
+      >
+
+      <input
+        id="productPrice"
+        type="number"
+        placeholder="قیمت به افغانی"
+      >
+
+      <select id="productCategory">
+
+        <option value="موبایل">
+          موبایل
+        </option>
+
+        <option value="لپتاپ">
+          لپتاپ
+        </option>
+
+        <option value="موتر">
+          موتر
+        </option>
+
+        <option value="خانه">
+          خانه
+        </option>
+
+        <option value="لباس">
+          لباس
+        </option>
+
+        <option value="دیگر">
+          دیگر
+        </option>
+
+      </select>
+
+      <input
+        id="productImage"
+        type="url"
+        placeholder="لینک عکس کالا"
+      >
+
+      <textarea
+        id="productDescription"
+        placeholder="توضیحات کالا"
+      ></textarea>
+
+      <button id="saveProductBtn" class="primary-btn">
+        ثبت آگهی
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- PRODUCT DETAILS -->
+  <div id="detailsModal" class="modal">
+
+    <div class="modal-box">
+
+      <button class="close" data-close="detailsModal">
+        ×
+      </button>
+
+      <div id="detailsContent"></div>
+
+    </div>
+
+  </div>
+
+
+  <!-- TOAST -->
+  <div id="toast" class="toast"></div>
+
+
+  <!-- MOBILE NAV -->
+  <nav class="bottom-nav">
+
+    <button onclick="window.scrollTo({top:0,behavior:'smooth'})">
+      🏠
+      <span>خانه</span>
+    </button>
+
+    <button id="mobileAddBtn">
+      ➕
+      <span>ثبت آگهی</span>
+    </button>
+
+    <button id="mobileAccountBtn">
+      👤
+      <span>حساب</span>
+    </button>
+
+  </nav>
+
+</body>
+</html>
